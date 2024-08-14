@@ -1,3 +1,4 @@
+"use client"
 import { ClipboardDocumentCheckIcon } from '@heroicons/react/24/outline'
 import React, { useState } from 'react'
 import axiosApi from './hooks/interceptor'
