@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.wrapper {
+  @apply max-w-[1529px] lg:mx-auto p-5   md:px-10 lg:px-20 w-full normalText;
+}
+.wrapper-inner {
+  @apply lg:mx-auto px-2    md:px-5 lg:px-10 w-full normalText;
+}
+.heading1 {
+  @apply font-medium text-[35px] xl:text-[45px] leading-10 text-black tracking-wider;
+}
+.heading1-white {
+  @apply font-medium text-[35px] xl:text-[45px] leading-10 text-white tracking-wider;
+}
+
+.heading2 {
+  @apply font-medium text-[25px] leading-8 text-black tracking-wide;
+}
+.heading2-white {
+  @apply font-medium text-[25px] leading-8 text-white tracking-wide;
+}
+.heading2-nocolor {
+  @apply font-medium text-[22px] leading-8  tracking-normal;
+}
+.normalText {
+  @apply lg:text-[15px] md:text-[13px] text-[12px] xl:leading-[26px] md:leading-5 leading-[17px] text-black;
+}
+.largeText-white {
+  @apply font-medium text-[21px] leading-8 text-white tracking-normal;
+}
+.smallText {
+  @apply text-[14px] leading-6 text-[#475467];
+}
+.smallText-white {
+  @apply text-[14px] leading-6 text-white;
+}
+.normalBorder {
+  @apply border border-black/20 rounded-full;
+}
+.input-border {
+  @apply border border-black/20;
+}
+.btnTransitition {
+  @apply hover:ease-in-out hover:duration-300 hover:scale-110;
+}
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* Custom scrollbar styles */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar in WebKit browsers (Safari, Chrome) */
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* Hide the scrollbar in IE and Edge */
+    scrollbar-width: none; /* Hide the scrollbar in Firefox */
+  }
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .rotateY-0 {
+    transform: rotateY(0deg);
+  }
+  .rotateY-10 {
+    transform: rotateY(10deg);
+  }
+}
+
+/* pseudo css items here */
+@media only screen and (min-width: 640px) {
+  .sidebarItem::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: black;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .sidebarItem::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+  }
+}
+
+/* 
+.p-after::after {
+  content: "...";
+  position: absolute;
+  right: 12px;
+  font-size: 25px;
+  top: 20px;
+  width: 20px;
+  height: 100%;
+} */
+.select .header::after {
+  content: "↓";
+  align-self: stretch;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  padding: 0.5em;
+}
+
+/* Define the keyframes for the animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(460px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(1600px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+/* Apply the animation to the .cartModal class */
+.cartModal {
+  animation: slideIn 2s forwards;
+}
+.Modal {
+  animation: slideUp 1s forwards;
+}
+
+/*skeleton */
