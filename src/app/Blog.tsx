@@ -19,6 +19,19 @@ const Blog = () => {
     const closeModal = () => {
         setOpen(false)
     }
+    const [categories, setCategories] = useState<any>([])
+    const [subCategories, setSubCategories] = useState<any>([])
+    useEffect(() => {
+        const fetchCategories = async () => {
+            const res = await axiosApi.get('/blog-category/all')
+            const res2 = await axiosApi.get('/sub-category/all')
+            if (res.status == 200 || res.status == 201) {
+                setCategories(res.data)
+                setSubCategories(res2.data)
+            }
+        }
+        fetchCategories()
+    }, [])
     const closeCategoryModal = () => {
         setCategoryOpen(false)
     }
@@ -40,6 +53,16 @@ const Blog = () => {
         if (page === 1) return
         setPage(page - 1)
 
+    }
+
+    const getCategoryName = (id: any) => {
+        const category = categories?.find((item: any) => item?._id == id)
+        return category?.name
+    }
+
+    const getSubCategoryName = (id: any) => {
+        const category = subCategories?.find((item: any) => item?._id == id)
+        return category?.name
     }
 
     const handleIncrease = () => {
@@ -92,8 +115,8 @@ const Blog = () => {
 
 
                                 <p >{item.name}</p>
-                                <p>{item.category}</p>
-                                <p>{item.sub_category}</p>
+                                <p>{getCategoryName(item.category)}</p>
+                                <p>{getSubCategoryName(item.sub_category)}</p>
                                 <p>
 
                                     <span dangerouslySetInnerHTML={{ __html: item.content.slice(0, 200) }} />
