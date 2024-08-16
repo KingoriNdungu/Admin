@@ -45,17 +45,17 @@ const Modal: React.FC<modalProps> = ({ open, closeModal }) => {
         e.preventDefault()
         const payload = {
             name,
-            category,
-            sub_category,
+            category: selectedCategory,
+            sub_category: selectedSubCategory,
             content: value,
             quotes
         }
-
+        console.log(payload)
         const res = await axiosApi.post('/blog/create', payload)
         const formdata = new FormData()
         formdata.append("file", uploadfile)
         if (res) {
-            toast.success("blog created successfully")
+            // toast.success("blog created successfully")
             closeModal()
             const res2 = await axiosApi.post(`/blog/create/image/${res.data._id}`, formdata)
 
