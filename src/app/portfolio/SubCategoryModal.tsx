@@ -1,7 +1,7 @@
 "use client"
 import { ClipboardDocumentCheckIcon } from '@heroicons/react/24/outline'
 import React, { useEffect, useState } from 'react'
-import axiosApi from './interceptor'
+import axiosApi from '@hooks/interceptor'
 
 export interface modalProps {
     open: boolean

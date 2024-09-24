@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import axiosApi from './hooks/interceptor'
+import axiosApi from '@hooks/interceptor'
 import Image from 'next/image'
 import Modal from './Modal'
 import { ChevronDownIcon, ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
