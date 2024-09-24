@@ -1,11 +1,10 @@
-
 import { ClipboardDocumentCheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import React, { useEffect, useState } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { toast } from 'react-toastify';
 import Image from 'next/image';
-import axiosApi from '@hooks/interceptor';
+import axiosApi from '@hooks/interceptor'
 
 export interface modalProps {
     open: boolean

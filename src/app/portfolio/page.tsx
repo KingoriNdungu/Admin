@@ -1,15 +1,15 @@
-"use client"
+'use client';
 import React, { useEffect, useState } from 'react'
-import axiosApi from '@hooks/interceptor'
 import Image from 'next/image'
-import Modal from './Modal'
 import { ChevronDownIcon, ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
+
+//comment section
+import axiosApi from '@hooks/interceptor'
+import Modal from './Modal'
+// In page.tsx
 import CategoryModal from './CategoryModal'
 import SubCategoryModal from './SubCategoryModal'
-
-
-
-const Blog = () => {
+const Page = () => {
     const [data, setData] = useState<any>([])
     const [open, setOpen] = useState(false)
     const [categoryOpen, setCategoryOpen] = useState(false)
@@ -18,12 +18,18 @@ const Blog = () => {
     const isHTMLContent = (contentType: string) => contentType === 'html';
     const closeModal = () => {
         setOpen(false)
+
     }
+
+
+
+
+
     const [categories, setCategories] = useState<any>([])
     const [subCategories, setSubCategories] = useState<any>([])
     useEffect(() => {
         const fetchCategories = async () => {
-            const res = await axiosApi.get('/blog-category/all')
+            const res = await axiosApi.get('/portfolio-category/all')
             const res2 = await axiosApi.get('/sub-category/all')
             if (res.status == 200 || res.status == 201) {
                 setCategories(res.data)
@@ -96,12 +102,12 @@ const Blog = () => {
             <div className=' w-full grid grid-cols-7 py-2 capitalize !font-semibold !text-[20px]'>
 
 
-                <p > Blog name</p>
-                <p>category</p>
+                <p > SAHARA PRODUCTIONS</p>
+                <p>about us</p>
                 <p className=''>subcategory</p>
-                <p>content</p>
-                <p>Blog Image</p>
+                <p>projects</p>
                 <p>quotes</p>
+                <p>contacts</p>
                 <p>date created</p>
             </div>
 
@@ -156,4 +162,4 @@ const Blog = () => {
     )
 }
 
-export default Blog
+export default Page
