@@ -4,7 +4,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { toast } from 'react-toastify';
 import Image from 'next/image';
-import axiosApi from '@hooks/interceptor'
+import axiosApi from '..//..//hooks/interceptor';
 
 export interface modalProps {
     open: boolean
@@ -81,7 +81,7 @@ const Modal: React.FC<modalProps> = ({ open, closeModal }) => {
 
                         <div>
                             <label htmlFor="Name">Name</label>
-                            <input type="text" id="Name" onChange={(e) => setName(e.target.value)} value={name} className='w-full py-2 rounded-xl outline-bgBlack bg-primaryGray text-bgBlack pl-6' placeholder="Enter Blog Name" />
+                            <input type="text" id="Name" onChange={(e) => setName(e.target.value)} value={name} className='w-full py-2 rounded-xl outline-bgBlack bg-primaryGray text-bgBlack pl-6' placeholder="Enter Portfolio title" />
                         </div>
                         <div>
                             <label htmlFor="category">category</label>
@@ -138,7 +138,7 @@ const Modal: React.FC<modalProps> = ({ open, closeModal }) => {
                                     </div>
                                 ) : (
                                     <div className='w-full flex flex-col gap-2 h-full items-center justify-center'>
-                                        <p className='!text-PrimaryOrange smallText cursor-pointer'>Click to upload your profile Image</p>
+                                        <p className='!text-PrimaryOrange smallText cursor-pointer'>Click to upload your video</p>
                                         <p className='smallText cursor-pointer'>1200 x 1600 (3:4) recommended</p>
                                     </div>
                                 )}
@@ -146,7 +146,7 @@ const Modal: React.FC<modalProps> = ({ open, closeModal }) => {
                         </div>
                         <div>
                             <label htmlFor="quotes">quotes</label>
-                            <input type="text" id="quotes" onChange={(e) => setQuotes(e.target.value)} value={quotes} className='w-full py-2 rounded-xl outline-bgBlack bg-primaryGray text-bgBlack pl-6' placeholder="Enter Blog Quotes" />
+                            <input type="text" id="quotes" onChange={(e) => setQuotes(e.target.value)} value={quotes} className='w-full py-2 rounded-xl outline-bgBlack bg-primaryGray text-bgBlack pl-6' placeholder="Enter Portfolio Quotes" />
                         </div>
                         <button onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleSubmit(e)} className='w-full py-2 rounded-xl outline-bgBlack bg-black text-white '>Submit</button>
                     </form>

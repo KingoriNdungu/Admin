@@ -47,7 +47,7 @@ const Page = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await axiosApi.get(`/blog/all?page=${page}&limit=10`)
+            const res = await axiosApi.get(`/portfolio/page/all?page=${page}&limit=10`)
             setData(res.data)
         }
         fetchData()
@@ -82,9 +82,9 @@ const Page = () => {
             <div className='flex  space-x-6'>
 
 
-                <button className='bg-slate-300  p-2 rounded-lg' onClick={() => setOpen(!open)}>Create Blog</button>
-                <button className='bg-slate-300  p-2 rounded-lg' onClick={() => setCategoryOpen(!open)}>Create Blog Category</button>
-                <button className='bg-slate-300  p-2 rounded-lg' onClick={() => setSubCategoryOpen(!open)}>Create Blog sub Category</button>
+                <button className='bg-slate-300  p-2 rounded-lg' onClick={() => setOpen(!open)}>Create Portfolio</button>
+                <button className='bg-slate-300  p-2 rounded-lg' onClick={() => setCategoryOpen(!open)}>Create Portfolio Category</button>
+                <button className='bg-slate-300  p-2 rounded-lg' onClick={() => setSubCategoryOpen(!open)}>Create Portfolio sub Category</button>
             </div>
             {
 
@@ -102,7 +102,7 @@ const Page = () => {
             <div className=' w-full grid grid-cols-7 py-2 capitalize !font-semibold !text-[20px]'>
 
 
-                <p > SAHARA PRODUCTIONS</p>
+                <p > SAHARA </p>
                 <p>about us</p>
                 <p className=''>subcategory</p>
                 <p>projects</p>

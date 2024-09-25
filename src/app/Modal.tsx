@@ -82,7 +82,7 @@ const Modal: React.FC<modalProps> = ({ open, closeModal }) => {
 
                         <div>
                             <label htmlFor="Name">Name</label>
-                            <input type="text" id="Name" onChange={(e) => setName(e.target.value)} value={name} className='w-full py-2 rounded-xl outline-bgBlack bg-primaryGray text-bgBlack pl-6' placeholder="Enter Blog Name" />
+                            <input type="text" id="Name" onChange={(e) => setName(e.target.value)} value={name} className='w-full py-2 rounded-xl outline-bgBlack bg-primaryGray text-bgBlack pl-6' placeholder="Enter blog name" />
                         </div>
                         <div>
                             <label htmlFor="category">category</label>
