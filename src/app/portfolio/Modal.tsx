@@ -16,10 +16,11 @@ export interface FileObject {
     size: number
 }
 const Modal: React.FC<modalProps> = ({ open, closeModal }) => {
+    
     const [value, setValue] = useState('');
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
-    const [sub_category, setSubCategory] = useState('');
+    //const [sub_category, setSubCategory] = useState('');
     const [content, setContent] = useState('');
     const [quotes, setQuotes] = useState('');
     const [file, setFile] = useState<FileObject>({ name: '', size: 0 })
@@ -28,14 +29,16 @@ const Modal: React.FC<modalProps> = ({ open, closeModal }) => {
     const [categories, setCategories] = useState<any>([])
     const [subCategories, setSubCategories] = useState<any>([])
     const [selectedCategory, setSelectedCategory] = useState<any>(null)
-    const [selectedSubCategory, setSelectedSubCategory] = useState<any>(null)
+    //const [selectedSubCategory, setSelectedSubCategory] = useState<any>(null)
+    
+    
     useEffect(() => {
         const fetchCategories = async () => {
-            const res = await axiosApi.get('/blog-category/all')
-            const res2 = await axiosApi.get('/sub-category/all')
+            const res = await axiosApi.get('/portfolio-category/all')
+           // const res2 = await axiosApi.get('/sub-category/all')
             if (res.status == 200 || res.status == 201) {
                 setCategories(res.data)
-                setSubCategories(res2.data)
+                //setSubCategories(res2.data)
             }
         }
         fetchCategories()
@@ -45,18 +48,18 @@ const Modal: React.FC<modalProps> = ({ open, closeModal }) => {
         const payload = {
             name,
             category: selectedCategory,
-            sub_category: selectedSubCategory,
+            //sub_category: selectedSubCategory,
             content: value,
             quotes
         }
         console.log(payload)
-        const res = await axiosApi.post('/blog/create', payload)
+        const res = await axiosApi.post('/portfolio/create', payload)
         const formdata = new FormData()
         formdata.append("file", uploadfile)
         if (res) {
             // toast.success("blog created successfully")
             closeModal()
-            const res2 = await axiosApi.post(`/blog/create/image/${res.data._id}`, formdata)
+            const res2 = await axiosApi.post(`/portfolio/create/image/${res.data._id}`, formdata)
 
         }
         console.log(res, res.data, res.data._id)
@@ -94,35 +97,20 @@ const Modal: React.FC<modalProps> = ({ open, closeModal }) => {
                                 }
                             </select>
                         </div>
-                        <div>
-                            <label htmlFor="sub_category">sub_category</label>
-                            <select id="Name" onChange={(e) => setSelectedSubCategory(e.target.value)} className='w-full py-2 rounded-xl outline-bgBlack bg-primaryGray text-bgBlack pl-6'>
-                                <option value="">select sub category</option>
-                                {
-                                    subCategories && subCategories.length > 0 && subCategories.map((item: any) => {
-                                        return <option key={item._id} value={item._id}>{item.name}</option>
-                                    })
-                                }
-                            </select>
-                        </div>
+                      
                         <div>
                             <label htmlFor="store_address">content</label>
                             <ReactQuill theme="snow" className='' value={value} onChange={setValue} />
                         </div>
                         <div className='relative !border-[#D1D5DB] normalBorder box-border !rounded-2xl flex justify-center flex-col items-center border-dashed px-4 py-4 w-full min-h-16 cursor-pointer'>
                             <label className='w-full h-full bg-colorWhite'>
-                                <input onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                    const selectedFile = e.target.files && e.target.files[0]
-                                    if (selectedFile?.type !== 'image/png' && selectedFile?.type !== 'image/jpeg' && selectedFile?.type !== 'image/jpg' && selectedFile?.type !== 'application/pdf') {
-                                        toast.error('Only png, jpeg, jpg and pdf files are allowed')
-                                        return
-                                    }
-                                    if (selectedFile) {
-                                        setFile({ name: selectedFile.name, size: selectedFile.size })
-                                        setUploadFile(selectedFile)
-                                        setUploadFileUrl(URL.createObjectURL(selectedFile))
-                                    }
-                                }} type="file" className='absolute inset-0 w-full h-full hidden cursor-pointer' />
+                            <input onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                const textInput = e.target.value;
+                                 setFile({ name: textInput, size: 0 });
+                                 setUploadFile(textInput);
+                                 setUploadFileUrl('');  // No preview needed for text input
+                            }} type="text" className='absolute inset-0 w-full h-full hidden cursor-pointer' />
+
                                 {file?.name !== '' || file?.size !== 0 ? (
                                     <div className='flex w-full h-full gap-x-2 md:gap-x-0 md:justify-between items-center'>
                                         <Image src={uploadfileurl} width={60} height={60} alt="" />

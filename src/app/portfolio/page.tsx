@@ -8,12 +8,10 @@ import axiosApi from '@hooks/interceptor'
 import Modal from './Modal'
 // In page.tsx
 import CategoryModal from './CategoryModal'
-import SubCategoryModal from './SubCategoryModal'
 const Page = () => {
     const [data, setData] = useState<any>([])
     const [open, setOpen] = useState(false)
     const [categoryOpen, setCategoryOpen] = useState(false)
-    const [subCategoryOpen, setSubCategoryOpen] = useState(false)
     const [page, setPage] = useState(1)
     const isHTMLContent = (contentType: string) => contentType === 'html';
     const closeModal = () => {
@@ -26,14 +24,14 @@ const Page = () => {
 
 
     const [categories, setCategories] = useState<any>([])
-    const [subCategories, setSubCategories] = useState<any>([])
+
     useEffect(() => {
         const fetchCategories = async () => {
             const res = await axiosApi.get('/portfolio-category/all')
-            const res2 = await axiosApi.get('/sub-category/all')
+            //const res2 = await axiosApi.get('/sub-category/all')
             if (res.status == 200 || res.status == 201) {
                 setCategories(res.data)
-                setSubCategories(res2.data)
+        
             }
         }
         fetchCategories()
@@ -41,9 +39,7 @@ const Page = () => {
     const closeCategoryModal = () => {
         setCategoryOpen(false)
     }
-    const closeSubCategoryModal = () => {
-        setSubCategoryOpen(false)
-    }
+    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -66,10 +62,7 @@ const Page = () => {
         return category?.name
     }
 
-    const getSubCategoryName = (id: any) => {
-        const category = subCategories?.find((item: any) => item?._id == id)
-        return category?.name
-    }
+
 
     const handleIncrease = () => {
         if (data.data.length < 10) return
@@ -84,7 +77,6 @@ const Page = () => {
 
                 <button className='bg-slate-300  p-2 rounded-lg' onClick={() => setOpen(!open)}>Create Portfolio</button>
                 <button className='bg-slate-300  p-2 rounded-lg' onClick={() => setCategoryOpen(!open)}>Create Portfolio Category</button>
-                <button className='bg-slate-300  p-2 rounded-lg' onClick={() => setSubCategoryOpen(!open)}>Create Portfolio sub Category</button>
             </div>
             {
 
@@ -94,10 +86,7 @@ const Page = () => {
 
                 categoryOpen && <CategoryModal open={categoryOpen} closeModal={closeCategoryModal} />
             }
-            {
-
-                subCategoryOpen && <SubCategoryModal open={subCategoryOpen} closeModal={closeSubCategoryModal} />
-            }
+            
 
             <div className=' w-full grid grid-cols-7 py-2 capitalize !font-semibold !text-[20px]'>
 
@@ -122,7 +111,7 @@ const Page = () => {
 
                                 <p >{item.name}</p>
                                 <p>{getCategoryName(item.category)}</p>
-                                <p>{getSubCategoryName(item.sub_category)}</p>
+
                                 <p>
 
                                     <span dangerouslySetInnerHTML={{ __html: item.content.slice(0, 200) }} />
