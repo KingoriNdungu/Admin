@@ -158,7 +158,7 @@ const Modal: React.FC<modalProps> = ({ open, closeModal,setBlogData,blogData,set
                             <label htmlFor="quotes">quotes</label>
                             <input type="text" id="quotes" onChange={(e) => setQuotes(e.target.value)} value={quotes} className='w-full py-2 rounded-xl outline-bgBlack bg-primaryGray text-bgBlack pl-6' placeholder="Enter Blog Quotes" />
                         </div>
-                        <button onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleSubmit(e)} className='w-full py-2 rounded-xl outline-bgBlack bg-black text-white '>Submit</button>
+                        <button onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleSubmit(e)} className='w-full py-2 rounded-xl outline-bgBlack bg-black text-white '>{blogData?.name?.length>0?'Update':'Submit'}</button>
                     </form>
                 </div>
             </div>
