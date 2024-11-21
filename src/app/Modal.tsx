@@ -99,7 +99,7 @@ const Modal: React.FC<modalProps> = ({ open, closeModal,setBlogData,blogData,set
                                 <option value="">select category</option>
                                 {
                                     categories && categories.length > 0 && categories.map((item: any) => {
-                                        return <option key={item._id} selected={item._id==category} value={item._id}>{item.name}</option>
+                                        return <option key={item._id} selected={item._id==selectedCategory} value={item._id}>{item.name}</option>
                                     })
                                 }
                             </select>
@@ -110,7 +110,7 @@ const Modal: React.FC<modalProps> = ({ open, closeModal,setBlogData,blogData,set
                                 <option value="">select sub category</option>
                                 {
                                     subCategories && subCategories.length > 0 && subCategories.map((item: any) => {
-                                        return <option key={item._id} selected={item._id==sub_category} value={item._id}>{item.name}</option>
+                                        return <option key={item._id} selected={item._id==selectedSubCategory} value={item._id}>{item.name}</option>
                                     })
                                 }
                             </select>
