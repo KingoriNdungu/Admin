@@ -57,7 +57,7 @@ const Modal: React.FC<modalProps> = ({ open, closeModal,setBlogData,blogData,set
         formdata.append("file", uploadfile)
         console.log(payload)
         if(blogData?.name?.length>0){
-            const res = await axiosApi.put(`/blog/${blogData?.id}`, payload)
+            const res = await axiosApi.put(`/blog/${blogData?._id}`, payload)
        
             if (res) {
                
