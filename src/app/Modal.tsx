@@ -53,19 +53,34 @@ const Modal: React.FC<modalProps> = ({ open, closeModal,setBlogData,blogData,set
             content: value,
             quotes
         }
-        console.log(payload)
-        const res = await axiosApi.post('/blog/create', payload)
         const formdata = new FormData()
         formdata.append("file", uploadfile)
-        if (res) {
-           
-            closeModal()
-            const res2 = await axiosApi.post(`/blog/create/image/${res.data._id}`, formdata)
-            toast.success("blog created successfully")
-            setBlogData(null)
-
+        console.log(payload)
+        if(blogData?.name?.length>0){
+            const res = await axiosApi.put(`/blog/${blogData?.id}`, payload)
+       
+            if (res) {
+               
+                closeModal()
+                const res2 = await axiosApi.post(`/blog/create/image/${res.data._id}`, formdata)
+                toast.success("blog created successfully")
+                setBlogData(null)
+    
+            }
+        }else{
+            const res = await axiosApi.post('/blog/create', payload)
+       
+            if (res) {
+               
+                closeModal()
+                const res2 = await axiosApi.post(`/blog/create/image/${res.data._id}`, formdata)
+                toast.success("blog created successfully")
+                setBlogData(null)
+    
+            }
+            console.log(res, res.data, res.data._id)
         }
-        console.log(res, res.data, res.data._id)
+       
     }
     const handleClose=()=>{
         setBlogData(null)
