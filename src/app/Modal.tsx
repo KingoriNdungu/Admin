@@ -11,14 +11,15 @@ export interface modalProps {
     open: boolean
     closeModal: () => void
     blogData: any,
-    setBlogData: any
+    setBlogData: any,
+    setCounter:any;
 }
 
 export interface FileObject {
     name: string
     size: number
 }
-const Modal: React.FC<modalProps> = ({ open, closeModal,setBlogData,blogData }) => {
+const Modal: React.FC<modalProps> = ({ open, closeModal,setBlogData,blogData,setCounter }) => {
     const [value, setValue] = useState(blogData?.content);
     const [name, setName] = useState(blogData?.name);
     const [category, setCategory] = useState('');
