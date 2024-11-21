@@ -31,8 +31,8 @@ const Modal: React.FC<modalProps> = ({ open, closeModal,setBlogData,blogData,set
     const [uploadfileurl, setUploadFileUrl] = useState(blogData?.image)
     const [categories, setCategories] = useState<any>([])
     const [subCategories, setSubCategories] = useState<any>([])
-    const [selectedCategory, setSelectedCategory] = useState<any>(blogData.category)
-    const [selectedSubCategory, setSelectedSubCategory] = useState<any>(blogData.sub_category)
+    const [selectedCategory, setSelectedCategory] = useState<any>(blogData?.category)
+    const [selectedSubCategory, setSelectedSubCategory] = useState<any>(blogData?.sub_category)
     useEffect(() => {
         const fetchCategories = async () => {
             const res = await axiosApi.get('/blog-category/all')
