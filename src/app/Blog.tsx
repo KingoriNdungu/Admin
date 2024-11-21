@@ -170,12 +170,15 @@ const Blog = () => {
                     </span>
                   )}
                 </p>
-                <Image
+                {
+                  item?.image? <Image
                   src={item.image}
                   width={100}
                   height={100}
                   alt={item.name}
-                />
+                />:null
+                }
+               
                 <p>
                   {item.quotes.slice(0, 20)}{" "}
                   {item.content.length > 200 && (
