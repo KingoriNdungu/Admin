@@ -10,26 +10,28 @@ import axiosApi from '@hooks/interceptor';
 export interface modalProps {
     open: boolean
     closeModal: () => void
+    blogData: any,
+    setBlogData: any
 }
 
 export interface FileObject {
     name: string
     size: number
 }
-const Modal: React.FC<modalProps> = ({ open, closeModal }) => {
-    const [value, setValue] = useState('');
-    const [name, setName] = useState('');
+const Modal: React.FC<modalProps> = ({ open, closeModal,setBlogData,blogData }) => {
+    const [value, setValue] = useState(blogData?.content);
+    const [name, setName] = useState(blogData?.name);
     const [category, setCategory] = useState('');
     const [sub_category, setSubCategory] = useState('');
     const [content, setContent] = useState('');
-    const [quotes, setQuotes] = useState('');
-    const [file, setFile] = useState<FileObject>({ name: '', size: 0 })
+    const [quotes, setQuotes] = useState(blogData?.quotes);
+    const [file, setFile] = useState<FileObject>(blogData?.image?.length>0?{ name: 'default', size: 10 }:{ name: '', size: 0 })
     const [uploadfile, setUploadFile] = useState<any>({})
-    const [uploadfileurl, setUploadFileUrl] = useState('')
+    const [uploadfileurl, setUploadFileUrl] = useState(blogData?.image)
     const [categories, setCategories] = useState<any>([])
     const [subCategories, setSubCategories] = useState<any>([])
-    const [selectedCategory, setSelectedCategory] = useState<any>(null)
-    const [selectedSubCategory, setSelectedSubCategory] = useState<any>(null)
+    const [selectedCategory, setSelectedCategory] = useState<any>(blogData.category)
+    const [selectedSubCategory, setSelectedSubCategory] = useState<any>(blogData.sub_category)
     useEffect(() => {
         const fetchCategories = async () => {
             const res = await axiosApi.get('/blog-category/all')
