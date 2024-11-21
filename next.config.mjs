@@ -1,3 +1,5 @@
+import { hostname } from 'os';
+
 /** @type {import('next').NextConfig} */
 const baseUrl =
   process.env.NODE_ENV === "development"
@@ -16,6 +18,18 @@ const nextConfig = {
         hostname: "res.cloudinary.com",
         port: "",
       },
+      {
+        protocol:"https",
+        hostname:"tailwindui.com",
+        port:"",
+
+      },{
+        protocol:"https",
+        hostname:"images.unsplash.com",
+        port:"",
+        
+      }
+
     ],
   },
   async rewrites() {

@@ -15,23 +15,7 @@ const initAxios = async () => {
     axios.defaults.withCredentials = true;
 
     // Function to refresh cookies before each request
-    const refreshCookies = () => {
-      const cookies = document.cookie
-        .split("; ")
-        .reduce((prev: any, current: string) => {
-          const [name, value] = current.split("=");
-          prev[name] = value;
-          return prev;
-        }, {});
 
-      refreshToken = cookies.refreshToken;
-      accessToken = cookies.accessToken;
-
-      axios.defaults.headers.common[
-        "Cookie"
-      ] = `resfreshToken=${refreshToken};accessToken=${accessToken}`;
-      // axios.defaults.headers.common['x-api-key'] = `${process.env.NEXT_PUBLIC_API_KEY}`;
-    };
 
     // Initial cookie refresh
     // refreshCookies();
