@@ -63,7 +63,7 @@ const Modal: React.FC<modalProps> = ({ open, closeModal,setBlogData,blogData,set
                
                 closeModal()
                 const res2 = await axiosApi.post(`/blog/create/image/${res.data._id}`, formdata)
-                toast.success("blog created successfully")
+                toast.success("blog updated successfully")
                 setBlogData(null)
     
             }
@@ -75,6 +75,7 @@ const Modal: React.FC<modalProps> = ({ open, closeModal,setBlogData,blogData,set
                 closeModal()
                 const res2 = await axiosApi.post(`/blog/create/image/${res.data._id}`, formdata)
                 toast.success("blog created successfully")
+                setCounter((prev:number)=>prev+1)
                 setBlogData(null)
     
             }

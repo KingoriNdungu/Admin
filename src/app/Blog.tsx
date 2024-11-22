@@ -176,7 +176,8 @@ const Blog = () => {
                   width={100}
                   height={100}
                   alt={item.name}
-                />:null
+                />:<Image src="https://res.cloudinary.com/dyxqzvej0/image/upload/v1732184905/blog_images/ojvkwhcic5jnrp1av9pa.jpg" width={100}
+                height={100} alt="img" />
                 }
                
                 <p>
