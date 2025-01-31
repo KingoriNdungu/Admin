@@ -1,5 +1,3 @@
-
-
 let axios: any;
 let refreshToken: string | undefined;
 let accessToken: string | undefined;
@@ -16,14 +14,18 @@ const initAxios = async () => {
 
     // Function to refresh cookies before each request
 
-
     // Initial cookie refresh
     // refreshCookies();
 
     // Set up axios interceptors to refresh cookies before each request
     axios.interceptors.request.use(
       async (config: any) => {
-        // refreshCookies();
+        // Add headers for specific endpoints
+        if (config.url?.includes("/portfolio/create/images")) {
+          // Only for this specific endpoint
+          config.headers["Content-Type"] = "multipart/form-data";
+        }
+
         return config;
       },
       (error: any) => {
@@ -37,7 +39,7 @@ const initAxios = async () => {
         }
 
         return Promise.reject(error);
-      }
+      },
     );
   }
 

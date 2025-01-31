@@ -1,4 +1,4 @@
-import { hostname } from 'os';
+import { hostname } from "os";
 
 /** @type {import('next').NextConfig} */
 const baseUrl =
@@ -19,17 +19,15 @@ const nextConfig = {
         port: "",
       },
       {
-        protocol:"https",
-        hostname:"tailwindui.com",
-        port:"",
-
-      },{
-        protocol:"https",
-        hostname:"images.unsplash.com",
-        port:"",
-        
-      }
-
+        protocol: "https",
+        hostname: "tailwindui.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        port: "",
+      },
     ],
   },
   async rewrites() {
